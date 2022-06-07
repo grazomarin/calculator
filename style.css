@@ -24,7 +24,7 @@
     height: 70px;
 }
 
-.result {
+.bar {
     display: flex;
     justify-content: end;
     font-size: 40px;
