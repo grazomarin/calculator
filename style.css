@@ -33,3 +33,6 @@
     border: 0.8mm black solid;
 }
 
+.clicked {
+    filter: brightness(70%);
+}

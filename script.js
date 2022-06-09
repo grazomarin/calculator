@@ -4,8 +4,9 @@ const signs = document.querySelectorAll('.sign')
 const equal = document.querySelector('.equalize')
 const numbers = document.querySelectorAll('.number')
 const ac = document.querySelector('.AC')
+const dot = document.querySelector('.dot')
 
-let result;
+let result = 0;
 let session = [];
 let clickCount = 0;
 let signCount = 0;
@@ -16,13 +17,12 @@ function math () {
     pressedNumber();
     pressedSign();
     evaluate();
-    bar.textContent = '0'
-    equalize();
 }
 
 function pressedNumber () {
     numbers.forEach(number => {
         number.addEventListener('click', () => {
+            signs.forEach(sign => {sign.classList.remove('clicked')});
             if (clickCount === 0) {
                 bar.textContent = '';
                 clickCount += 1;
@@ -37,6 +37,8 @@ function pressedNumber () {
 function pressedSign () {
     signs.forEach(sign => {
         sign.addEventListener('click', () => {
+            dotCount = 0
+            sign.classList.add('clicked')
             if (signCount === 0) {
                 clickCount = 0;
                 session.push(Number(bar.textContent));
@@ -47,7 +49,6 @@ function pressedSign () {
                 evaluate();
                 session.push(Number(bar.textContent));
                 session.push(sign.textContent);
-                signCount
             }
         })
     })
@@ -62,16 +63,20 @@ function evaluate() {
         else if(session[1] === '*') {result = multiply(session[0], session[2])}
         else if (session[1] === '/') {result = divide(session[0], session[2])}
         session = []
-        bar.textContent = result;
+        if (result === NaN) {
+            bar.textContent = 'ERROR';
+        } else {
+            bar.textContent = parseFloat(result.toFixed(3))
+        }
 }
 
-function equalize() {
-    equal.addEventListener('click', () => {
-        session.push(Number(bar.textContent));
-        evaluate();
-        session.push(Number(bar.textContent));
-    });
-}
+
+equal.addEventListener('click', () => {
+    dotCount = 0
+    session.push(Number(bar.textContent));
+    evaluate();
+    session.push(Number(bar.textContent));
+});
 
 function add (a, b) {return a + b};
 function minus (a, b) {return a - b};
@@ -81,11 +86,21 @@ function divide (a, b) {return a / b};
 math();
 
 ac.addEventListener('click', () => {
+    dotCount = 0
     signCount = 0;
     clickCount = 0;
     bar.textContent = '0';
     session = [];
 })
+
+dot.addEventListener('click', () => {
+    if (dotCount === 0) {
+        bar.textContent += '.';
+        dotCount += 1;
+    }
+});
+
+
 
 
 
@@ -94,12 +109,4 @@ not a number is pressed we will record the value of the 1st part and accept the 
 let the user to type one more number. if the session exceeds 3 steps we equalize what we have then record
 the value for further use*/
 
-
-        //clickCount = 0;
-        //if (session[1] === '+') {result = add(session[0], session[2])}
-        //else if(session[1] === '-') {result = minus(session[0], session[2])}
-        //else if(session[1] === '*') {result = multiply(session[0], session[2])}
-        //else if (session[1] === '/') {result = divide(session[0], session[2])}
-        //bar.textContent = result;
-        //session = [];
 
