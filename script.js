@@ -5,6 +5,7 @@ const equal = document.querySelector('.equalize')
 const numbers = document.querySelectorAll('.number')
 const ac = document.querySelector('.AC')
 const dot = document.querySelector('.dot')
+const plusMinus = document.querySelector('.plusMinus')
 
 let result = 0;
 let session = [];
@@ -64,9 +65,13 @@ function evaluate() {
         else if (session[1] === '/') {result = divide(session[0], session[2])}
         session = []
         bar.textContent = parseFloat(result.toFixed(3))
+<<<<<<< HEAD
         if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {
             bar.textContent = 'ERROR'; //FIX
         }
+=======
+        if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {bar.textContent = 'ERROR';}
+>>>>>>> 5f52f09 (fix this)
 }
 
 
@@ -74,7 +79,7 @@ equal.addEventListener('click', () => {
     dotCount = 0
     session.push(Number(bar.textContent));
     evaluate();
-    session.push(Number(bar.textContent));
+    //session.push(Number(bar.textContent));
 });
 
 function add (a, b) {return a + b};
@@ -99,9 +104,22 @@ dot.addEventListener('click', () => {
     }
 });
 
+plusMinus.addEventListener('click', () => {
+    const barAray = Array.from(bar.textContent)
+    if (barAray[0] == '-') {
+        barAray.splice(0,1);
+        bar.textContent = `${barAray.join('')}`;
+    } else {
+        barAray.unshift('-');
+        bar.textContent = `${barAray.join('')}`;
+    }
+    
+
+});
 
 
 
+// fix the second equation is started without restart the calculator breaks
 
 /* numbers are pressed we are just pushing the values into the text content of result. If
 not a number is pressed we will record the value of the 1st part and accept the sign. afterwards
