@@ -71,7 +71,13 @@ function evaluate() {
         else if (session[1] === '%') {result = remainder(session[0], session[2])}
         session = []
         bar.textContent = parseFloat(result.toFixed(3))
+<<<<<<< HEAD
         if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {bar.textContent = 'ERROR';}
+=======
+        if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {
+            bar.textContent = 'ERROR'; //FIX
+        }
+>>>>>>> dbf3a82 (added feature when unsolvable equation is given error is shown)
 }
 
 
