@@ -63,10 +63,9 @@ function evaluate() {
         else if(session[1] === '*') {result = multiply(session[0], session[2])}
         else if (session[1] === '/') {result = divide(session[0], session[2])}
         session = []
-        if (result === NaN) {
-            bar.textContent = 'ERROR';
-        } else {
-            bar.textContent = parseFloat(result.toFixed(3))
+        bar.textContent = parseFloat(result.toFixed(3))
+        if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {
+            bar.textContent = 'ERROR'; //FIX
         }
 }
 
