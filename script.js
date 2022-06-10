@@ -74,6 +74,7 @@ equal.addEventListener('click', () => {
     session.push(Number(bar.textContent));
     evaluate();
     //session.push(Number(bar.textContent));
+    signCount = 0;
 });
 
 function add (a, b) {return a + b};
