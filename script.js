@@ -6,6 +6,7 @@ const numbers = document.querySelectorAll('.number')
 const ac = document.querySelector('.AC')
 const dot = document.querySelector('.dot')
 const plusMinus = document.querySelector('.plusMinus')
+const del = document.querySelector('.del')
 
 let result = 0;
 let session = [];
@@ -121,7 +122,11 @@ plusMinus.addEventListener('click', () => {
     }
 });
 
-// fix the problem with multiple times pressing plus minus
+del.addEventListener('click', () => {
+    const barAray = Array.from(bar.textContent)
+    barAray.pop()
+    bar.textContent = barAray.join()
+})
 
 /* numbers are pressed we are just pushing the values into the text content of result. If
 not a number is pressed we will record the value of the 1st part and accept the sign. afterwards
