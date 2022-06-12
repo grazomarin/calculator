@@ -2,12 +2,18 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: white;
+    transition: all 0.5s;
+}
+
 .master {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     width: 100%;
     flex: 1 0 0;
     justify-content: center;
+    align-content: center;
 }
 
 .calculator{
@@ -22,6 +28,16 @@
 .button {
     width: 70px;
     height: 70px;
+    font-size: 18px;
+    font-family: monospace;
+    background-color: white;
+    border-width: 1.9px;
+    border-color: white;
+    transition: 0.5s;
+}
+
+.button:hover {
+    filter: brightness(80%);
 }
 
 .bar {
@@ -30,9 +46,70 @@
     font-size: 40px;
     width: 280px;
     height: 70px;
-    border: 0.8mm black solid;
+    border: 0.7mm black solid;
+    transition: all 0.5s;
 }
 
 .clicked {
-    filter: brightness(70%);
+    filter: brightness(80%);
+}
+
+.sign, .equal {
+    background-color: #FFBF69;
+    border-color: #FFBF69;
+    transition: all 0.5s;
+}
+
+.AC, .del, .perc {
+    background-color: #2EC4B6;
+    border-color: #2EC4B6;
+    transition: all 0.5s;
+}
+
+.theme {
+    position: relative;
+    float: right;
+    width: 95px;
+    height: 25px;
+    font-family: monospace;
+    border-radius: 6px;
+    background-color: white;
+    color: black;
+    border: 1px dashed black;
+    transition: all 500ms;
+}
+
+
+.toggleOn {
+    background-color: black;
+    color: white;
+    transition: all 0.5s;
+}
+
+body.toggleOn {
+    background-color: black;
+}
+
+.theme.toggleOn {
+    border: 1px solid white;
+}
+
+
+.sign.toggleOn, .equal.toggleOn {
+    background-color: #820263;
+    border-color: white;
+    color: white;
+    transition: all 0.5s;
+}
+
+.AC.toggleOn, .del.toggleOn, .perc.toggleOn {
+    background-color: #2e294e;
+    border-color: white;
+    color: white;
+    transition: all 0.5s;
+}
+
+.bar.toggleOn{
+    border-color: white;
+    transition: 0.3s;
 }

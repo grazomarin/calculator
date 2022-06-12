@@ -1,12 +1,13 @@
 const bar = document.querySelector('.bar')
 const buttons = document.querySelectorAll('button')
 const signs = document.querySelectorAll('.sign')
-const equal = document.querySelector('.equalize')
+const equal = document.querySelector('.equal')
 const numbers = document.querySelectorAll('.number')
 const ac = document.querySelector('.AC')
 const dot = document.querySelector('.dot')
 const plusMinus = document.querySelector('.plusMinus')
 const del = document.querySelector('.del')
+const perc = document.querySelector('.perc')
 
 let result = 0;
 let session = [];
@@ -128,9 +129,27 @@ del.addEventListener('click', () => {
     bar.textContent = barAray.join()
 })
 
-/* numbers are pressed we are just pushing the values into the text content of result. If
-not a number is pressed we will record the value of the 1st part and accept the sign. afterwards
-let the user to type one more number. if the session exceeds 3 steps we equalize what we have then record
-the value for further use*/
 
+const theme = document.querySelector('.theme')
 
+function changeTheme() {
+    theme.addEventListener('click', () => {
+        document.querySelector('body').classList.toggle('toggleOn')
+        theme.classList.toggle('toggleOn')
+        if (theme.classList.contains('toggleOn')) {
+            theme.textContent = 'dark mode'
+        } else {
+            theme.textContent =  'light mode'
+        }
+        numbers.forEach(number => number.classList.toggle('toggleOn'))
+        signs.forEach(sign => sign.classList.toggle('toggleOn'))
+        dot.classList.toggle('toggleOn')
+        plusMinus.classList.toggle('toggleOn')
+        ac.classList.toggle('toggleOn')
+        del.classList.toggle('toggleOn')
+        equal.classList.toggle('toggleOn')
+        bar.classList.toggle('toggleOn')
+    })
+}
+
+changeTheme();
