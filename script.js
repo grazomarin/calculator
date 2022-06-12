@@ -71,22 +71,7 @@ function evaluate() {
         else if (session[1] === '%') {result = remainder(session[0], session[2])}
         session = []
         bar.textContent = parseFloat(result.toFixed(3))
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {bar.textContent = 'ERROR';}
-=======
-        if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {
-            bar.textContent = 'ERROR'; //FIX
-        }
->>>>>>> dbf3a82 (added feature when unsolvable equation is given error is shown)
-=======
-        if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {
-            bar.textContent = 'ERROR'; //FIX
-        }
-=======
-        if (bar.textContent == 'NaN' || bar.textContent == 'Infinity') {bar.textContent = 'ERROR';}
->>>>>>> 5f52f09 (fix this)
->>>>>>> 2829690 (fix this)
 }
 
 
@@ -95,11 +80,7 @@ equal.addEventListener('click', () => {
     dotCount = 0
     session.push(Number(bar.textContent));
     evaluate();
-<<<<<<< HEAD
     signCount = 0;
-=======
-    //session.push(Number(bar.textContent));
->>>>>>> 2829690 (fix this)
 });
 
 function add (a, b) {return a + b};
@@ -129,10 +110,7 @@ dot.addEventListener('click', () => {
 });
 
 plusMinus.addEventListener('click', () => {
-<<<<<<< HEAD
     signs.forEach(sign => sign.classList.remove('clicked')); 
-=======
->>>>>>> 2829690 (fix this)
     const barAray = Array.from(bar.textContent)
     if (barAray[0] == '-') {
         barAray.splice(0,1);
@@ -141,19 +119,7 @@ plusMinus.addEventListener('click', () => {
         barAray.unshift('-');
         bar.textContent = `${barAray.join('')}`;
     }
-<<<<<<< HEAD
 });
-
-// fix the problem with multiple times pressing plus minus
-=======
-    
-
-});
-
-
-
-// fix the second equation is started without restart the calculator breaks
->>>>>>> 2829690 (fix this)
 
 /* numbers are pressed we are just pushing the values into the text content of result. If
 not a number is pressed we will record the value of the 1st part and accept the sign. afterwards
