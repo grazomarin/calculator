@@ -130,26 +130,27 @@ del.addEventListener('click', () => {
 })
 
 
+const root = document.documentElement
 const theme = document.querySelector('.theme')
 
-function changeTheme() {
-    theme.addEventListener('click', () => {
-        document.querySelector('body').classList.toggle('toggleOn')
-        theme.classList.toggle('toggleOn')
-        if (theme.classList.contains('toggleOn')) {
-            theme.textContent = 'dark mode'
-        } else {
-            theme.textContent =  'light mode'
-        }
-        numbers.forEach(number => number.classList.toggle('toggleOn'))
-        signs.forEach(sign => sign.classList.toggle('toggleOn'))
-        dot.classList.toggle('toggleOn')
-        plusMinus.classList.toggle('toggleOn')
-        ac.classList.toggle('toggleOn')
-        del.classList.toggle('toggleOn')
-        equal.classList.toggle('toggleOn')
-        bar.classList.toggle('toggleOn')
-    })
+let themeVal = window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light'
+if (themeVal === 'dark') {
+    root.className = 'dark';
+    theme.textContent = 'Light Theme'
+} else {
+    root.className = 'light';
+    theme.textContent = 'Dark Theme'
 }
 
-changeTheme();
+theme.addEventListener('click', () => {
+    if (themeVal === 'dark') {
+        themeVal = 'light'
+        root.className = 'light'
+        theme.textContent = 'Dark Theme'
+    } else {
+        themeVal = 'dark'
+        root.className = 'dark'
+        theme.textContent = 'Light Theme'
+    }
+})
+/* if dark mode pref matches change txt to  */

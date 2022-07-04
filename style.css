@@ -1,9 +1,29 @@
+:root.light {
+    --btn-color: white;
+    --func-color-1: #FFBF69;
+    --func-color-2: #2EC4B6;
+    --border-color: black;
+    --body-color: white;
+    --txt-color: black;
+    --theme-name: light;
+}
+
+:root.dark {
+    --btn-color: black;
+    --func-color-1: #820263;
+    --func-color-2: #2e294e;
+    --border-color: white;
+    --body-color: black;
+    --txt-color: white;
+    --theme-name: dark;
+} 
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: white;
+    background-color: var(--body-color) ;
     transition: all 0.5s;
 }
 
@@ -17,12 +37,17 @@ body {
 }
 
 .calculator{
-    align-content: center;
-    width: 340px;
-    height: 800px;
+    margin-top: 80px;
+    width: 280px;
+    height: 420px;
     display: flex;
     flex-flow: row wrap;
     flex: 0 0 auto;
+    box-shadow: 1px 1px 15px black;
+}
+
+.calculator * {
+    color: var(--txt-color);
 }
 
 .button {
@@ -30,9 +55,9 @@ body {
     height: 70px;
     font-size: 18px;
     font-family: monospace;
-    background-color: white;
+    background-color: var(--btn-color);
     border-width: 1.9px;
-    border-color: white;
+    border-color: var(--border-color);
     transition: 0.5s;
 }
 
@@ -46,7 +71,7 @@ body {
     font-size: 40px;
     width: 280px;
     height: 70px;
-    border: 0.7mm black solid;
+    border: 0.7mm var(--border-color) solid;
     transition: all 0.5s;
 }
 
@@ -55,61 +80,26 @@ body {
 }
 
 .sign, .equal {
-    background-color: #FFBF69;
-    border-color: #FFBF69;
+    background-color: var(--func-color-1);
+    border-color: var(--func-color-1);
     transition: all 0.5s;
 }
 
 .AC, .del, .perc {
-    background-color: #2EC4B6;
-    border-color: #2EC4B6;
+    background-color: var(--func-color-2);
+    border-color: var(--func-color-2);
     transition: all 0.5s;
 }
 
 .theme {
     position: relative;
     float: right;
-    width: 95px;
+    width: 99px;
     height: 25px;
     font-family: monospace;
     border-radius: 6px;
-    background-color: white;
-    color: black;
-    border: 1px dashed black;
+    background-color: var(--body-color);
+    color: var(--border-color);
+    border: 1px dashed var(--border-color);
     transition: all 500ms;
-}
-
-
-.toggleOn {
-    background-color: black;
-    color: white;
-    transition: all 0.5s;
-}
-
-body.toggleOn {
-    background-color: black;
-}
-
-.theme.toggleOn {
-    border: 1px solid white;
-}
-
-
-.sign.toggleOn, .equal.toggleOn {
-    background-color: #820263;
-    border-color: white;
-    color: white;
-    transition: all 0.5s;
-}
-
-.AC.toggleOn, .del.toggleOn, .perc.toggleOn {
-    background-color: #2e294e;
-    border-color: white;
-    color: white;
-    transition: all 0.5s;
-}
-
-.bar.toggleOn{
-    border-color: white;
-    transition: 0.3s;
 }
